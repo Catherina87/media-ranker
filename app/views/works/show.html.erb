@@ -9,6 +9,6 @@
 <p>Pulication Year: <%= @work.publication_year %> </p>
 <p>Description: <%= @work.description %> </p>
 
-<%= link_to "List of Works", works_path %>
-<%= link_to "Edit", edit_work_path(@work.id) %>
-<%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title} ?"}  %>
+<%= link_to "List of Works", works_path, class: "btn btn-primary" %>
+<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
+<%= link_to "Delete", work_path(@work.id), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title} ?"}  %>

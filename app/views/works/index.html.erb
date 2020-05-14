@@ -4,14 +4,28 @@
 
 <h1>List of Works</h2>
 
-<% @work.each do |work| %>
-<ul>
-  <li>
-    <%= work.category %>
-    <%= link_to work.title, work_path(work.id) %>
-    <%= work.creator %>
-    <%= work.publication_year %>
-    <%= work.description %>
-  </li>
-</ul>
-<% end%>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @work.each do |work| %>
+
+      <tr>   
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
+
+    <% end%>
+    
+  </tbody>
+</table>
+
+
+
