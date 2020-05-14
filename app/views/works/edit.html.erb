@@ -1,0 +1,9 @@
+
+<% if @work.category == "album"%>
+  <h1> Edit an <%= @work.category%> </h1>
+<% else %>
+  <h1> Edit a <%= @work.category%> </h1>
+<% end %>
+
+
+<%= render partial: "form", locals: { action_name: "Edit" } %>
