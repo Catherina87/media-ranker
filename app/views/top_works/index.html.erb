@@ -1,1 +1,14 @@
 <h1>Top Media<h1>
+
+<h3>Top Albums</h3>
+
+<% @albums.each do |album| %>
+  <p><%= album.title %></p>
+<% end %>
+
+
+<h3>Top Books</h3>
+
+<% @books.each do |book| %>
+  <p><%= book.title %></p>
+<% end %>
