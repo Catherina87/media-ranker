@@ -22,4 +22,13 @@ class Work < ApplicationRecord
     return books.sample(5)
   end
 
+  def self.top_movies
+    movies = self.sort_movie_works
+    return movies.sample(5)
+  end
+
+  def self.get_spotlight
+    return Work.first
+  end
+
 end

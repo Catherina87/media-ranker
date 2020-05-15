@@ -1,14 +1,20 @@
-<h1>Top Media<h1>
+<h1>Media Spotlight: <%= @spotlight.title %> by <%= @spotlight.creator %> <h1>
 
 <h3>Top Albums</h3>
 
 <% @albums.each do |album| %>
-  <p><%= album.title %></p>
+  <p><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></p>
 <% end %>
 
 
 <h3>Top Books</h3>
 
 <% @books.each do |book| %>
-  <p><%= book.title %></p>
+  <p><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></p>
+<% end %>
+
+<h3>Top Movies</h3>
+
+<% @movies.each do |movie| %>
+  <p><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %></p>
 <% end %>
