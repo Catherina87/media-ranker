@@ -1,4 +1,14 @@
 
 <h1> Add a new work </h1>
 
+<% if @work.errors.any? %>
+  <ul>
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <%= column.capitalize %> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= render partial: "form", locals: { action_name: "New" } %>

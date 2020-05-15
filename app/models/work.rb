@@ -1,5 +1,13 @@
 class Work < ApplicationRecord
 
+  validates :category, presence: true 
+  validates :title, presence: true 
+  validates :title, uniqueness: { case_sensitive: false} 
+  validates :creator, presence: true 
+  validates :publication_year, presence: true 
+  validates :publication_year, numericality: { only_integer: true }
+  validates :description, presence: true 
+
   def self.sort_album_works
     return Work.where(category: "album")
   end
