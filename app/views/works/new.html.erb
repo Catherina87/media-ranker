@@ -2,13 +2,17 @@
 <h1> Add a new work </h1>
 
 <% if @work.errors.any? %>
-  <ul>
+
+  <div class="alert alert-warning" role="alert">
+    <strong>A problem occured:</strong> could not create <%= @work.category%>
+    <br>
     <% @work.errors.each do |column, message| %>
-      <li>
-        <%= column.capitalize %> <%= message %>
-      </li>
+      
+      <strong><%= column.capitalize %></strong> <%= message %>
+      <br>
     <% end %>
-  </ul>
+  </div>
+  
 <% end %>
 
 <%= render partial: "form", locals: { action_name: "New" } %>

@@ -1,7 +1,11 @@
 
-<section class="flash">
-<p> <%= flash[:success] %></p>
-</section>
+<% if flash[:success] != nil && flash[:success] != "" %>
+
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
+  </div>
+
+<% end %>
 
 <p>Category: <%= @work.category %> </p>
 <p>Title: <%= @work.title %> </p>
