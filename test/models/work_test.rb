@@ -93,6 +93,61 @@ describe Work do
   end
 
   describe "custom methods" do 
-  
+
+    describe "sort_album_works" do 
+      it "sorts works by albums" do 
+        albums = Work.sort_album_works
+
+        result = albums.length 
+        expect(result).must_equal 2
+      end    
+    end
+
+    describe "sort_book_works" do 
+      it "sorts works by books" do 
+        books = Work.sort_book_works
+
+        result = books.length 
+        expect(result).must_equal 1
+      end
+    end
+
+    describe "sort_movie_works" do 
+      it "sorts works by movies" do 
+        movies = Work.sort_movie_works
+
+        result = movies.length 
+        expect(result).must_equal 1
+      end
+    end
+
+    describe "top_albums" do 
+      it "returns 2 albums" do 
+        albums = Work.top_albums
+
+        result = albums.length
+        expect(result).must_equal 2
+      end
+
+      it "returns empty array if there are no albums" do 
+        albums = Work.sort_album_works
+        albums.each do |a|
+          a.category = "book"
+          a.save
+        end
+
+        result = Work.top_albums
+        expect(result).must_equal []
+      end
+    end
+
+    describe "top_books" do 
+    end
+
+    describe "top_movies" do
+    end
+
+    describe "get_spotlight" do 
+    end
   end
 end

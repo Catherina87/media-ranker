@@ -4,3 +4,21 @@ titanic:
   creator: James Cameron
   publication_year: 1998
   description: Wonderful movie
+dandelion_wine:
+  category: book
+  title: Dandelion Wine
+  creator: Ray Bradbury
+  publication_year: 1957
+  description: Autobigraphy
+some_album:
+  category: album
+  title: Just Album
+  creator: Katty
+  publication_year: 2020
+  description: great album
+another_album:
+  category: album
+  title: Another Album
+  creator: Katty
+  publication_year: 2020
+  description: great album
