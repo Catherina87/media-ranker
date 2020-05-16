@@ -60,5 +60,39 @@ describe Work do
       expect(result).must_equal false 
       expect(work.errors.messages).must_include :creator
     end
+
+    it "is invalid without publication_year" do 
+      work = works(:titanic)
+      work.publication_year = nil 
+      work.save 
+
+      result = work.valid?
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :publication_year
+    end
+
+    it "is invalid if publication_year is not a number" do 
+      work = works(:titanic)
+      work.publication_year = "year"
+      work.save 
+
+      result = work.valid?
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :publication_year
+    end
+
+    it "is invalid without description" do 
+      work = works(:titanic)
+      work.description = nil 
+      work.save 
+
+      result = work.valid? 
+      expect(result).must_equal false 
+      expect(work.errors.messages).must_include :description 
+    end
+  end
+
+  describe "custom methods" do 
+  
   end
 end
