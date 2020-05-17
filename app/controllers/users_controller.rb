@@ -30,4 +30,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout 
+    session[:user_id] = nil
+    flash[:success_logout] = "Successfully logged out"
+    redirect_to root_path
+    return 
+  end
 end
