@@ -5,6 +5,7 @@ class VotesController < ApplicationController
     
     if session[:user_id] == nil 
       flash[:error] = "Please log in to upvote"
+      redirect_to work_path(params[:work_id])
       return
     end
 

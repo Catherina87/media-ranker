@@ -7,9 +7,14 @@
 
 <% end %>
 
-<div class="alert alert-warning" role="alert">
+<% if flash[:error] != nil && flash[:error] != "" %>
+
+  <div class="alert alert-warning" role="alert">
     <%= flash[:error] %>
-</div>
+  </div>
+  
+<% end %>
+
 
 
 <p>Category: <%= @work.category %> </p>
