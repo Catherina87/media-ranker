@@ -7,6 +7,11 @@
 
 <% end %>
 
+<div class="alert alert-warning" role="alert">
+    <%= flash[:error] %>
+</div>
+
+
 <p>Category: <%= @work.category %> </p>
 <p>Title: <%= @work.title %> </p>
 <p>Creator: <%= @work.creator %> </p>
@@ -16,3 +21,13 @@
 <%= link_to "List of Works", works_path, class: "btn btn-primary" %>
 <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
 <%= link_to "Delete", work_path(@work.id), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title} ?"}  %>
+<%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary" %>
+
+<% @work.votes.each do |vote| %>
+<ul>
+  <li>
+  <%= link_to vote.user.username, user_path(vote.user.id) %>
+  <%= vote.date%>
+  </li>
+</ul>
+<% end %>
