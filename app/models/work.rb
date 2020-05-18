@@ -11,7 +11,8 @@ class Work < ApplicationRecord
   validates :description, presence: true 
 
   def self.sort_album_works
-    return Work.where(category: "album")
+    albums = Work.where(category: "album").order(title: :asc)
+    
   end
 
   def self.sort_book_works
