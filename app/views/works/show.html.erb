@@ -12,9 +12,16 @@
   <div class="alert alert-warning" role="alert">
     <%= flash[:error] %>
   </div>
-  
+
 <% end %>
 
+<% if flash[:already_voted] != nil && flash[:already_voted] != "" %>
+
+  <div class="alert alert-warning" role="alert">
+    <%= flash[:already_voted] %>
+  </div>
+
+<% end %>
 
 
 <p>Category: <%= @work.category %> </p>

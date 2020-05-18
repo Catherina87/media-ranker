@@ -1,6 +1,5 @@
 class VotesController < ApplicationController
 
-
   def create 
     
     if session[:user_id] == nil 
@@ -21,7 +20,8 @@ class VotesController < ApplicationController
         date: "TODAY"
       )
     else 
-      flash[:error] = "Already voted"
+      flash[:already_voted] = "Already voted"
+      redirect_to work_path(params[:work_id])
       return
     end
 
