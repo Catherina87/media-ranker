@@ -290,9 +290,21 @@ describe Work do
         result = movies.length
         expect(result).must_equal 10
 
-        vote = Vote.create(
+        vote1 = Vote.create(
           user_id: users(:user_two).id, 
           work_id: works(:titanic).id,
+          date: "Today"
+        )
+
+        vote2 = Vote.create(
+          user_id: users(:user_one).id, 
+          work_id: works(:movie_two).id,
+          date: "Today"
+        )
+
+        vote3 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:movie_two).id,
           date: "Today"
         )
 
@@ -300,7 +312,7 @@ describe Work do
         expect(num_of_votes).must_equal 1
 
         works = Work.top_movies
-        expect(works[0].title).must_equal works(:titanic).title
+        expect(works[0].title).must_equal works(:movie_two).title
       end
 
       it "returns empty array if there are no movies" do 
@@ -326,9 +338,32 @@ describe Work do
         puts "RESULT = #{result}"
         expect(result).must_equal 5
       end  
+
     end
 
     describe "get_spotlight" do 
+      it "returns the media with the highest number of votes" do 
+        vote1 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:titanic).id,
+          date: "Today"
+        )
+
+        vote2 = Vote.create(
+          user_id: users(:user_one).id, 
+          work_id: works(:movie_two).id,
+          date: "Today"
+        )
+
+        vote3 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:movie_two).id,
+          date: "Today"
+        )
+
+        spotlight = Work.get_spotlight
+        expect(spotlight.title).must_equal works(:movie_two).title
+      end
     end
   end
 end
