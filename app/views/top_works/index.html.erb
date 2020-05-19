@@ -3,18 +3,19 @@
 <h3>Top Albums</h3>
 
 <% @albums.each do |album| %>
-  <p><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></p>
+  <p><%= link_to album.title, work_path(album.id) %> by <%= album.creator %> <%= album.votes.count%> votes </p>
+  
 <% end %>
 
 
 <h3>Top Books</h3>
 
 <% @books.each do |book| %>
-  <p><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></p>
+  <p><%= link_to book.title, work_path(book.id) %> by <%= book.creator %> <%= book.votes.count%> votes </p>
 <% end %>
 
 <h3>Top Movies</h3>
 
 <% @movies.each do |movie| %>
-  <p><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %></p>
+  <p><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %> <%= movie.votes.count%> votes</p>
 <% end %>

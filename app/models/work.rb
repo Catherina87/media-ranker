@@ -25,17 +25,17 @@ class Work < ApplicationRecord
 
   def self.top_albums
     albums = self.sort_album_works
-    return albums.sample(5)
+    return albums[0..9]
   end
 
   def self.top_books
     books = self.sort_book_works
-    return books.sample(5)
+    return books[0..9]
   end
 
   def self.top_movies
     movies = self.sort_movie_works
-    return movies.sample(5)
+    return movies[0..9]
   end
 
   def self.get_spotlight
