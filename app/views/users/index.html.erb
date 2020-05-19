@@ -1,0 +1,12 @@
+
+<% @user.each do |user| %>
+
+  <ul>
+    <li>
+      <%= user.username %>
+      <%= user.votes.count %>
+      <%= user.created_at %>
+    </li>
+  </ul>
+  
+<% end %>

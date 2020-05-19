@@ -44,4 +44,8 @@ class UsersController < ApplicationController
     redirect_to root_path
     return 
   end
+
+  def index 
+    @user = User.all
+  end
 end

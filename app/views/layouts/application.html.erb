@@ -18,6 +18,7 @@
     <%= link_to "View Top Media", root_path %>
     <%= link_to "View all Media", works_path %>
     <%= link_to "Add a new work", new_work_path %>
+    <%= link_to "View all users", users_path %>
 
     <% if session[:user_id] %>
       <% user = User.find_by(id: session[:user_id]) %>
