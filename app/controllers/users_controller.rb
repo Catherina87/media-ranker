@@ -12,23 +12,21 @@ class UsersController < ApplicationController
       @user = User.new(username: params[:user][:username])
       if !@user.save 
         flash[:error] = "Unable to login"
-        redirect_to login_path 
+        redirect_to root_path 
         return 
       end
       flash[:welcome] = "Welcome #{@user.username}"
-      redirect_to login_path
+      redirect_to root_path
       p "NEW USER = #{@user.username}"
     else
       # Existing user
       flash[:welcome] = "Welcome back #{@user.username}"
-      redirect_to login_path
+      redirect_to root_path
       p "Existing USER = #{@user.username}"
     end
 
     session[:user_id] = @user.id 
     session[:username] = @user.username
-
-    
   end
 
   def current
