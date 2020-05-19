@@ -174,7 +174,7 @@ describe Work do
         movies = Work.sort_movie_works
 
         result = movies.length 
-        expect(result).must_equal 1
+        expect(result).must_equal 10
 
         vote1 = Vote.create(
           user_id: users(:user_two).id, 
@@ -280,13 +280,52 @@ describe Work do
         result = Work.top_books.count
         puts "RESULT = #{result}"
         expect(result).must_equal 5
-      end
-
-
-          
+      end  
     end
 
     describe "top_movies" do
+      it "returns 10 movies" do 
+        movies = Work.top_movies
+
+        result = movies.length
+        expect(result).must_equal 10
+
+        vote = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:titanic).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:titanic).votes.count 
+        expect(num_of_votes).must_equal 1
+
+        works = Work.top_movies
+        expect(works[0].title).must_equal works(:titanic).title
+      end
+
+      it "returns empty array if there are no movies" do 
+        movies = Work.sort_movie_works
+        movies.each do |m|
+          m.category = "book"
+          m.save
+        end
+
+        result = Work.top_movies
+        expect(result).must_equal []
+      end
+
+      it "returns 5 movies if there are only 5 of them" do 
+        movies = Work.sort_movie_works
+        movies.each_with_index do |movie, index|
+          movie.category = "book"
+          movie.save
+          break if index == 4
+        end
+
+        result = Work.top_movies.count
+        puts "RESULT = #{result}"
+        expect(result).must_equal 5
+      end  
     end
 
     describe "get_spotlight" do 
