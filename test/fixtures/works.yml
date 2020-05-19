@@ -10,6 +10,12 @@ dandelion_wine:
   creator: Ray Bradbury
   publication_year: 1957
   description: Autobigraphy
+catcher_in_the_rye:
+  category: book
+  creator: Salinger
+  title: Catcher in the Rye
+  publication_year: 1951
+  description: Novel
 some_album:
   category: album
   title: Just Album

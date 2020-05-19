@@ -115,13 +115,27 @@ describe Work do
   end
 
   describe "custom methods" do 
-
     describe "sort_album_works" do 
       it "sorts works by albums" do 
         albums = Work.sort_album_works
 
         result = albums.length 
         expect(result).must_equal 2
+
+        vote1 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:some_album).id,
+          date: "Today"
+        )
+
+        vote2 = Vote.create(
+          user_id: users(:user_one).id, 
+          work_id: works(:some_album).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:some_album).votes.count 
+        expect(num_of_votes).must_equal 2
       end    
     end
 
@@ -130,7 +144,25 @@ describe Work do
         books = Work.sort_book_works
 
         result = books.length 
-        expect(result).must_equal 1
+        expect(result).must_equal 2
+
+        vote1 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:dandelion_wine).id,
+          date: "Today"
+        )
+
+        vote2 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:catcher_in_the_rye).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:dandelion_wine).votes.count 
+        expect(num_of_votes).must_equal 1
+
+        num_of_votes = works(:catcher_in_the_rye).votes.count 
+        expect(num_of_votes).must_equal 1
       end
     end
 
@@ -140,6 +172,21 @@ describe Work do
 
         result = movies.length 
         expect(result).must_equal 1
+
+        vote1 = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:titanic).id,
+          date: "Today"
+        )
+
+        vote2 = Vote.create(
+          user_id: users(:user_one).id, 
+          work_id: works(:titanic).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:titanic).votes.count 
+        expect(num_of_votes).must_equal 2
       end
     end
 
