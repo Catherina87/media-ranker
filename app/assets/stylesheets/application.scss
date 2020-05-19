@@ -16,3 +16,15 @@
 @import "bootstrap";
 
 @import "**/*";
+
+.app-header__header h1 {
+  color: palevioletred;
+  padding-right: 25px;
+  margin-right: 15px;
+}
+
+h2, h3{
+  padding-right: 25px;
+  margin-right: 15px;
+  color: palevioletred;
+}

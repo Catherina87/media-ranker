@@ -9,7 +9,7 @@
       <th>Joined</th>
     </tr>
   </thead>
-  
+
   <tbody>
 
   <% @user.each do |user| %>
@@ -17,10 +17,12 @@
     <tr>   
       <td><%= link_to user.username, user_path(user.id) %></td>
       <td><%= user.votes.count %></td>
-      <td><%= user.created_at %></td>
+      <td><%= user.created_at.strftime('%b %d, %Y') %></td>
     </tr>
 
   <% end%>
     
   </tbody>
 </table>
+
+<%= link_to "Back to Media List", root_path, class: "btn btn-secondary" %>
