@@ -11,7 +11,7 @@ class Work < ApplicationRecord
   validates :description, presence: true 
 
   def self.sort_album_works
-    puts "LOG: #{Vote.group(:work_id).count}"
+    # puts "LOG: #{Vote.group(:work_id).count}"
     return Work.where(category: "album").left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
 
@@ -39,18 +39,9 @@ class Work < ApplicationRecord
   end
 
   def self.get_spotlight
-    # winners = []
-    # winners << Work.top_albums.first.votes.count
-    # winners << Work.top_books.first.votes.count
-    # winners << Work.top_movies.first.votes.count
-    # puts "WINNERS = #{winners}"
+    # puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.title}"
+    # puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.votes.count}"
 
-    # max_votes = winners.max
-
-    # puts "MAX VOTES = #{winners[0].votes}"
-    # Work.
-    puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.title}"
-    puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.votes.count}"
     return Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first
   end
 
