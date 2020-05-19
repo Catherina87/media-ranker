@@ -11,8 +11,8 @@ class Work < ApplicationRecord
   validates :description, presence: true 
 
   def self.sort_album_works
-    albums = Work.where(category: "album").order(title: :asc)
-    
+    puts "LOG: #{Vote.group(:work_id).count}"
+    return Work.where(category: "album").left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
 
   def self.sort_book_works
