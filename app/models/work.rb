@@ -16,7 +16,7 @@ class Work < ApplicationRecord
   end
 
   def self.sort_book_works
-    return Work.where(category: "book")
+    return Work.where(category: "book").left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
 
   def self.sort_movie_works
