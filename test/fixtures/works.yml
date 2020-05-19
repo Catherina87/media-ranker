@@ -16,6 +16,54 @@ catcher_in_the_rye:
   title: Catcher in the Rye
   publication_year: 1951
   description: Novel
+book_three:
+  category: book
+  creator: Salinger
+  title: Book Three
+  publication_year: 1951
+  description: Novel
+book_four:
+  category: book
+  creator: Salinger
+  title: Book Four
+  publication_year: 1951
+  description: Novel
+book_five:
+  category: book
+  creator: Salinger
+  title: Book Five
+  publication_year: 1951
+  description: Novel
+book_six:
+  category: book
+  creator: Salinger
+  title: Book Six
+  publication_year: 1951
+  description: Novel
+book_seven:
+  category: book
+  creator: Salinger
+  title: Book Seven
+  publication_year: 1951
+  description: Novel
+book_eight:
+  category: book
+  creator: Salinger
+  title: Book Eight
+  publication_year: 1951
+  description: Novel
+book_nine:
+  category: book
+  creator: Salinger
+  title: Book Nine
+  publication_year: 1951
+  description: Novel
+book_ten:
+  category: book
+  creator: Salinger
+  title: Book Ten
+  publication_year: 1951
+  description: Novel
 some_album:
   category: album
   title: Just Album
@@ -25,6 +73,54 @@ some_album:
 another_album:
   category: album
   title: Another Album
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_three:
+  category: album
+  title: Album Three
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_four:
+  category: album
+  title: Album Four
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_five:
+  category: album
+  title: Album Five
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_six:
+  category: album
+  title: Album Six
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_seven:
+  category: album
+  title: Album Seven
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_eight:
+  category: album
+  title: Album Eight
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_nine:
+  category: album
+  title: Album Nine
+  creator: Katty
+  publication_year: 2020
+  description: great album
+album_ten:
+  category: album
+  title: Album Ten
   creator: Katty
   publication_year: 2020
   description: great album

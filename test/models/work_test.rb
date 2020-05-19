@@ -120,7 +120,7 @@ describe Work do
         albums = Work.sort_album_works
 
         result = albums.length 
-        expect(result).must_equal 2
+        expect(result).must_equal 10
 
         vote1 = Vote.create(
           user_id: users(:user_two).id, 
@@ -136,6 +136,9 @@ describe Work do
 
         num_of_votes = works(:some_album).votes.count 
         expect(num_of_votes).must_equal 2
+
+        albums = Work.sort_album_works
+        expect(albums[0].title).must_equal works(:some_album).title
       end    
     end
 
@@ -144,7 +147,7 @@ describe Work do
         books = Work.sort_book_works
 
         result = books.length 
-        expect(result).must_equal 2
+        expect(result).must_equal 10
 
         vote1 = Vote.create(
           user_id: users(:user_two).id, 
@@ -191,11 +194,23 @@ describe Work do
     end
 
     describe "top_albums" do 
-      it "returns 2 albums" do 
+      it "returns 10 albums" do 
         albums = Work.top_albums
 
         result = albums.length
-        expect(result).must_equal 2
+        expect(result).must_equal 10
+
+        vote = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:album_ten).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:album_ten).votes.count 
+        expect(num_of_votes).must_equal 1
+
+        albums = Work.top_albums
+        expect(albums[0].title).must_equal works(:album_ten).title
       end
 
       it "returns empty array if there are no albums" do 
@@ -208,9 +223,67 @@ describe Work do
         result = Work.top_albums
         expect(result).must_equal []
       end
+
+      it "returns 5 albums if there are only 5 of them" do 
+        albums = Work.sort_album_works
+        albums.each_with_index do |album, index|
+          album.category = "book"
+          album.save
+          break if index == 4
+        end
+
+        result = Work.top_albums.count
+        puts "RESULT = #{result}"
+        expect(result).must_equal 5
+      end
     end
 
     describe "top_books" do 
+      it "returns 10 books" do 
+        books = Work.top_books
+
+        result = books.length
+        expect(result).must_equal 10
+
+        vote = Vote.create(
+          user_id: users(:user_two).id, 
+          work_id: works(:dandelion_wine).id,
+          date: "Today"
+        )
+
+        num_of_votes = works(:dandelion_wine).votes.count 
+        expect(num_of_votes).must_equal 1
+
+        works = Work.top_books
+        expect(works[0].title).must_equal works(:dandelion_wine).title
+      end
+
+      it "returns empty array if there are no books" do 
+        books = Work.sort_book_works
+        books.each do |b|
+          b.category = "movie"
+          b.save
+        end
+
+        result = Work.top_books
+        expect(result).must_equal []
+      end
+
+      it "returns 5 books if there are only 5 of them" do 
+        books = Work.sort_book_works
+        books.each_with_index do |book, index|
+          book.category = "movie"
+          book.save
+          break if index == 4
+        end
+
+        result = Work.top_books.count
+        puts "RESULT = #{result}"
+        expect(result).must_equal 5
+      end
+
+
+          
     end
 
     describe "top_movies" do
