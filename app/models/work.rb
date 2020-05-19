@@ -39,7 +39,19 @@ class Work < ApplicationRecord
   end
 
   def self.get_spotlight
-    return Work.first
+    # winners = []
+    # winners << Work.top_albums.first.votes.count
+    # winners << Work.top_books.first.votes.count
+    # winners << Work.top_movies.first.votes.count
+    # puts "WINNERS = #{winners}"
+
+    # max_votes = winners.max
+
+    # puts "MAX VOTES = #{winners[0].votes}"
+    # Work.
+    puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.title}"
+    puts "TEST #{Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first.votes.count}"
+    return Work.left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').first
   end
 
 end
