@@ -69,7 +69,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      
+      <th>Votes</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
@@ -82,7 +82,7 @@
     <% movies.each do |movie| %>
 
       <tr>   
-        
+        <td><%= movie.votes.count %></td>
         <td><%= link_to movie.title, work_path(movie.id) %></td>
         <td><%= movie.creator %></td>
         <td><%= movie.publication_year %></td>

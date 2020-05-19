@@ -20,7 +20,7 @@ class Work < ApplicationRecord
   end
 
   def self.sort_movie_works
-    return Work.where(category: "movie")
+    return Work.where(category: "movie").left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
 
   def self.top_albums
