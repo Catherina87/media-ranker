@@ -92,6 +92,28 @@ describe Work do
     end
   end
 
+  describe "relations" do 
+    it "can have many votes" do 
+      work = works(:titanic)
+      user_1 = User.create(username: "Mary")
+      user_2 = User.create(username: "John")
+      vote_1 = Vote.create(work_id: work.id, user_id: user_1.id, date: Date.today)
+      vote_2 = Vote.create(work_id: work.id, user_id: user_2.id, date: Date.today)
+
+      expect(work.votes.count).must_equal 2
+    end
+
+    it "can access user through votes" do 
+      work = works(:titanic)
+      user_1 = User.create(username: "Mary")
+      user_2 = User.create(username: "John")
+      vote_1 = Vote.create(work_id: work.id, user_id: user_1.id, date: Date.today)
+      vote_2 = Vote.create(work_id: work.id, user_id: user_2.id, date: Date.today)
+
+      expect(work.votes[0].user.username).must_equal "Mary"
+    end
+  end
+
   describe "custom methods" do 
 
     describe "sort_album_works" do 
