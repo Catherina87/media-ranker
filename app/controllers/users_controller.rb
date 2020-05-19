@@ -5,20 +5,30 @@ class UsersController < ApplicationController
   end
 
   def login 
-    username = params[:user][:username]
-    user = User.find_by(username: username)
-
-    if user 
-      session[:user_id] = user.id 
-      flash[:success_login_existing_user] = "Successfully logged in as returning user #{username}"
+    @user = User.find_by(username: params[:user][:username])
+    
+    if @user.nil?
+      # New user
+      @user = User.new(username: params[:user][:username])
+      if !@user.save 
+        flash[:error] = "Unable to login"
+        redirect_to login_path 
+        return 
+      end
+      flash[:welcome] = "Welcome #{@user.username}"
+      redirect_to login_path
+      p "NEW USER = #{@user.username}"
     else
-      new_user = User.create(username: username)
-      session[:user_id] = new_user.id 
-      flash[:success_login_new_user] = "Successfully logged in as new user #{username}"
+      # Existing user
+      flash[:welcome] = "Welcome back #{@user.username}"
+      redirect_to login_path
+      p "Existing USER = #{@user.username}"
     end
 
-    redirect_to root_path
-    return
+    session[:user_id] = @user.id 
+    session[:username] = @user.username
+
+    
   end
 
   def current
