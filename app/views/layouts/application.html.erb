@@ -39,11 +39,17 @@
     </div>
   <% end %> 
 
-    <% if flash[:delete_success] != nil && flash[:delete_success] != "" %>
+  <% if flash[:delete_success] != nil && flash[:delete_success] != "" %>
     <div class="alert alert-success" role="alert">
       <%= flash[:delete_success] %>
     </div>
   <% end %> 
+
+  <% if flash[:success_logout] != nil && flash[:success_logout] != "" %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:success_logout] %>
+    </div>
+  <% end %>
 
   <body>
     <%= yield %>

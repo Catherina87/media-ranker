@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         redirect_to root_path 
         return 
       end
-      flash[:welcome] = "Welcome #{@user.username}"
+      flash[:welcome] = "Successfully created new user #{@user.username} with ID #{@user.id}"
       redirect_to root_path
       p "NEW USER = #{@user.username}"
     else
