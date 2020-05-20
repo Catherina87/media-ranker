@@ -66,12 +66,10 @@ class WorksController < ApplicationController
     flash[:delete_success] = "Successfully destroyed #{@work.category} #{@work.title}"
   end
 
-
   private 
 
   def work_params 
     return params.require(:work).permit(:category, :title, :creator,
     :publication_year, :description)
   end
-
 end

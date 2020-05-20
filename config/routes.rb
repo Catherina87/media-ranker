@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   get "top_works/index"
-
   root to: 'top_works#index'
-
   resources :works
 
   get "/login", to: "users#login_form", as: "login"
@@ -12,7 +10,6 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user" 
 
   resources :users, only: [:index, :show]
-
   resources :works do 
     resources :votes, only: [:create]
   end

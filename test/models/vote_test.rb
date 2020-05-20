@@ -22,7 +22,7 @@ describe Vote do
       expect(vote.work.title).must_equal works(:titanic).title
     end
 
-    it "can access usre through user_id" do 
+    it "can access user through user_id" do 
       vote = Vote.create(
         work_id: works(:titanic).id,
         user_id: users(:user_one).id,
