@@ -31,6 +31,14 @@
 
 <% end %>
 
+<% if flash[:upvote_success] != nil && flash[:upvote_success] != "" %>
+
+  <div class="alert alert-success" role="alert">
+    <%= flash[:upvote_success] %>
+  </div>
+
+<% end %>
+
 
 <p>Category: <%= @work.category %> </p>
 <p>Title: <%= @work.title %> </p>

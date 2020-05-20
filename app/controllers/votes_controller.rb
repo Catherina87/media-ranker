@@ -26,6 +26,7 @@ class VotesController < ApplicationController
       return
     end
 
+    flash[:upvote_success] = "Successfully upvoted!"
     redirect_to work_path(params[:work_id])
   end
 end
