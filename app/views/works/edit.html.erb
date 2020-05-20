@@ -1,9 +1,12 @@
 
-<% if @work.category == "album"%>
-  <h1> Edit an <%= @work.category%> </h1>
-<% else %>
-  <h1> Edit a <%= @work.category%> </h1>
-<% end %>
+<main>
+  <% if @work.category == "album"%>
+    <h2> Edit an <%= @work.category%> </h2>
+  <% else %>
+    <h2> Edit a <%= @work.category%> </h2>
+  <% end %>
 
-
-<%= render partial: "form", locals: { action_name: "Edit" } %>
+  <section>
+    <%= render partial: "form", locals: { action_name: "Edit" } %>
+  </section>
+</main>
