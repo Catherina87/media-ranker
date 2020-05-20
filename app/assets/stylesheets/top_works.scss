@@ -1,3 +1,71 @@
 // Place all the styles related to the TopWorks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.root__hr {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__header {
+  color: #26A69A;
+  font-weight: bold;
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+  color: #26A69A;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top-ten__header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+  font-weight: bold;
+  font-family: "Gudea", sans-serif;
+  font-size: 2rem;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.top-ten__list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.list-group-item{
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border: none;
+}
+
+.list-group-item a {
+  color: #26A69A;
+  text-decoration: none;
+}
+
+.top-ten__creator {
+  color: slategrey;
+}
