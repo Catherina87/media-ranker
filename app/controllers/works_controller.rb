@@ -45,6 +45,7 @@ class WorksController < ApplicationController
       head :not_found 
       return
     elsif @work.update(work_params)
+      flash[:update_success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
       return 
     else

@@ -23,6 +23,14 @@
 
 <% end %>
 
+<% if flash[:update_success] != nil && flash[:update_success] != "" %>
+
+  <div class="alert alert-success" role="alert">
+    <%= flash[:update_success] %>
+  </div>
+
+<% end %>
+
 
 <p>Category: <%= @work.category %> </p>
 <p>Title: <%= @work.title %> </p>
