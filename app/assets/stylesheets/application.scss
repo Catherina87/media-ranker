@@ -53,3 +53,21 @@ a:hover {
 section {
   display: block;
 }
+
+.top-ten__container {
+  display: grid;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
