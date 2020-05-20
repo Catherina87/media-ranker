@@ -1,42 +1,29 @@
 
 <% if flash[:success] != nil && flash[:success] != "" %>
-
   <div class="alert alert-success" role="alert">
     <%= flash[:success] %>
   </div>
-
 <% end %>
 
-<% if flash[:error] != nil && flash[:error] != "" %>
-
-  <div class="alert alert-warning" role="alert">
-    <%= flash[:error] %>
-  </div>
-
-<% end %>
 
 <% if flash[:already_voted] != nil && flash[:already_voted] != "" %>
-
   <div class="alert alert-warning" role="alert">
     <%= flash[:already_voted] %>
   </div>
-
 <% end %>
 
-<% if flash[:update_success] != nil && flash[:update_success] != "" %>
 
+<% if flash[:update_success] != nil && flash[:update_success] != "" %>
   <div class="alert alert-success" role="alert">
     <%= flash[:update_success] %>
   </div>
-
 <% end %>
 
-<% if flash[:upvote_success] != nil && flash[:upvote_success] != "" %>
 
+<% if flash[:upvote_success] != nil && flash[:upvote_success] != "" %>
   <div class="alert alert-success" role="alert">
     <%= flash[:upvote_success] %>
   </div>
-
 <% end %>
 
 

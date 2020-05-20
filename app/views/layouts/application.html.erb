@@ -51,6 +51,14 @@
     </div>
   <% end %>
 
+  <% if flash[:log_in_to_upvote] != nil && flash[:log_in_to_upvote] != "" %>
+
+    <div class="alert alert-warning" role="alert">
+      <%= flash[:log_in_to_upvote] %>
+    </div>
+
+  <% end %>
+
   <body>
     <%= yield %>
   </body>

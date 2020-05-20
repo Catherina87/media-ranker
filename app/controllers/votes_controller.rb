@@ -3,8 +3,8 @@ class VotesController < ApplicationController
   def create 
     
     if session[:user_id] == nil 
-      flash[:error] = "Please log in to upvote"
-      redirect_to work_path(params[:work_id])
+      flash[:log_in_to_upvote] = "Please log in to upvote"
+      redirect_to works_path
       return
     end
 
