@@ -1,30 +1,34 @@
 
 
-<div class="form-group">
-  <%= form_with model: @work do |f| %>
 
+<%= form_with model: @work do |f| %>
+
+  <div class="form-group">
     <%= f.label "Category:" %>
-    <%= f.select :category, ["album", "book", "movie"] %>
-    <br>
+    <%= f.select :category, options_for_select(["album", "book", "movie"], @work.category), class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label "Title:" %>
-    <%= f.text_field :title %>
-    <br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label "Creator:" %>
-    <%= f.text_field :creator %>
-    <br>
+    <%= f.text_field :creator, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label "Publication Year:" %>
-    <%= f.text_field :publication_year %>
-    <br>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label "Description:" %>
-    <%= f.text_field :description %>
-    <br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
 
-    <%= f.submit "#{action_name} Work", class: "work-button" %>
+  <%= f.submit "#{action_name} Work", class: "btn btn-primary" %>
 
-  <% end %>
+<% end %>
 
-</div>

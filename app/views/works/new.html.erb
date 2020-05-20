@@ -1,18 +1,24 @@
 
-<h1> Add a new work </h1>
+<main>
+  <h2> Add a new work </h2>
 
-<% if @work.errors.any? %>
+  <section>
 
-  <div class="alert alert-warning" role="alert">
-    <strong>A problem occured:</strong> could not create <%= @work.category%>
-    <br>
-    <% @work.errors.each do |column, message| %>
+    <% if @work.errors.any? %>
+
+      <div class="alert alert-warning" role="alert">
+        <strong>A problem occured:</strong> could not create <%= @work.category%>
+        <br>
+        <% @work.errors.each do |column, message| %>
+          
+          <strong><%= column.capitalize %></strong> <%= message %>
+          <br>
+        <% end %>
+      </div>
       
-      <strong><%= column.capitalize %></strong> <%= message %>
-      <br>
     <% end %>
-  </div>
-  
-<% end %>
 
-<%= render partial: "form", locals: { action_name: "New" } %>
+    <%= render partial: "form", locals: { action_name: "New" } %>
+
+  </section>
+</main>
