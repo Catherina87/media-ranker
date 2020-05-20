@@ -14,10 +14,11 @@ class VotesController < ApplicationController
     )
 
     if maybe_vote == nil
+      time = Time.now
       @vote = Vote.create(
         work_id: params[:work_id],
         user_id: session[:user_id],
-        date: "TODAY"
+        date: time.strftime('%b %d, %Y')
       )
     else 
       flash[:already_voted] = "Already voted"
