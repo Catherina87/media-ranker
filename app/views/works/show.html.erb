@@ -27,22 +27,45 @@
 <% end %>
 
 
-<p>Category: <%= @work.category %> </p>
-<p>Title: <%= @work.title %> </p>
-<p>Creator: <%= @work.creator %> </p>
-<p>Pulication Year: <%= @work.publication_year %> </p>
-<p>Description: <%= @work.description %> </p>
+<main>
 
-<%= link_to "List of Works", works_path, class: "btn btn-primary" %>
-<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
-<%= link_to "Delete", work_path(@work.id), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title} ?"}  %>
-<%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary" %>
+  <section>
+    <h2> <%= @work.title %> </h2>
+    <p>Created by: <%= @work.creator %> </p>
+    <p>Pulished: <%= @work.publication_year %> </p>
+    <p> <%= @work.description %> </p>
 
-<% @work.votes.each do |vote| %>
-<ul>
-  <li>
-  <%= link_to vote.user.username, user_path(vote.user.id) %>
-  <%= vote.date%>
-  </li>
-</ul>
-<% end %>
+    <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
+    <%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary" %>
+    <%= link_to "Delete", work_path(@work.id), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title} ?"}  %>
+  </section>
+
+  
+  <section class="works-votes__container">
+
+    <h3><%= @work.votes.count%> Votes for this <%= @work.category %></h3>
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @work.votes.each do |vote| %>
+        
+          <tr>
+            <td><%= link_to vote.user.username, user_path(vote.user.id) %></td>
+            <td><%= vote.date%></td>
+          </tr>
+
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+</main>
