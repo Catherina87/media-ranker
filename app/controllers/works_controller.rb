@@ -62,8 +62,8 @@ class WorksController < ApplicationController
     end
 
     @work.destroy
-    redirect_to works_path 
-    flash[:success] = "#{@work.category} #{@work.title} has been deleted"
+    redirect_to root_path
+    flash[:delete_success] = "Successfully destroyed #{@work.category} #{@work.title}"
   end
 
 
