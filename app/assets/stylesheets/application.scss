@@ -53,3 +53,14 @@ a:hover {
 section {
   display: block;
 }
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+.btn:hover {
+  background-color: #00796B;
+  color: white;
+}
