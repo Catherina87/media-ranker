@@ -22,11 +22,11 @@ class VotesController < ApplicationController
       )
     else 
       flash[:already_voted] = "Already voted"
-      redirect_to work_path(params[:work_id])
+      redirect_back(fallback_location: root_path)
       return
     end
 
     flash[:upvote_success] = "Successfully upvoted!"
-    redirect_to work_path(params[:work_id])
+    redirect_back(fallback_location: root_path)
   end
 end
