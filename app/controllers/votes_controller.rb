@@ -21,7 +21,7 @@ class VotesController < ApplicationController
         date: time.strftime('%b %d, %Y')
       )
     else 
-      flash[:already_voted] = "Already voted"
+      flash[:already_voted] = "Already voted for this work"
       redirect_back(fallback_location: root_path)
       return
     end
