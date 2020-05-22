@@ -51,10 +51,10 @@
     </div>
   <% end %>
 
-  <% if flash[:log_in_to_upvote] != nil && flash[:log_in_to_upvote] != "" %>
+  <% if flash[:require_login] != nil && flash[:require_login] != "" %>
 
     <div class="alert alert-warning" role="alert">
-      <%= flash[:log_in_to_upvote] %>
+      <%= flash[:require_login] %>
     </div>
 
   <% end %>

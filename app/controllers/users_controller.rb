@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :current_user, only: [:current]
+
   def login_form 
     @user = User.new
   end
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def current
-    @current_user = User.find_by(id: session[:user_id])
+    # @current_user = User.find_by(id: session[:user_id])
     if @current_user == nil
       flash[:error_login] = "You must be logged in to see this page"
       redirect_to root_path 
@@ -56,4 +58,10 @@ class UsersController < ApplicationController
       redirect_to users_path 
     end
   end
+
+  # private 
+
+  # def find_user 
+  #   @current_user = User.find_by(id: session[:user_id])
+  # end
 end

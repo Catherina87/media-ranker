@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
 
+  before_action :require_login, only: [:create]
+
   def create 
-    
-    if session[:user_id] == nil 
-      flash[:log_in_to_upvote] = "Please log in to upvote"
-      redirect_to works_path
+    work = Work.find_by(id: params[:work_id])
+
+    if work.nil?
+      head :not_found 
       return
     end
 
@@ -21,7 +23,7 @@ class VotesController < ApplicationController
         date: time.strftime('%b %d, %Y')
       )
     else 
-      flash[:already_voted] = "Already voted for this work"
+      flash[:already_voted] = "You already voted for this work"
       redirect_back(fallback_location: root_path)
       return
     end
