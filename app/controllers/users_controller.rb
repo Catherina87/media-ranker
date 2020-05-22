@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :current_user, only: [:current]
+  before_action :require_login, only: [:index, :show]
 
   def login_form 
     @user = User.new
@@ -19,12 +20,10 @@ class UsersController < ApplicationController
       end
       flash[:welcome] = "Successfully created new user #{@user.username} with ID #{@user.id}"
       redirect_to root_path
-      p "NEW USER = #{@user.username}"
     else
       # Existing user
       flash[:welcome] = "Welcome back #{@user.username}"
       redirect_to root_path
-      p "Existing USER = #{@user.username}"
     end
 
     session[:user_id] = @user.id 
@@ -32,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def current
-    # @current_user = User.find_by(id: session[:user_id])
     if @current_user == nil
       flash[:error_login] = "You must be logged in to see this page"
       redirect_to root_path 
@@ -58,10 +56,4 @@ class UsersController < ApplicationController
       redirect_to users_path 
     end
   end
-
-  # private 
-
-  # def find_user 
-  #   @current_user = User.find_by(id: session[:user_id])
-  # end
 end
