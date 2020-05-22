@@ -22,7 +22,11 @@
       <tbody>
 
       <% votes = @user.votes%>
+      
       <% votes.each do |vote| %>
+        <% if vote.work == nil %>
+          <% next %>
+        <% end %>
 
         <tr>   
           <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
